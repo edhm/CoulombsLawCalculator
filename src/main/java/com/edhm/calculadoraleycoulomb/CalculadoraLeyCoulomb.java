@@ -78,6 +78,7 @@ public class CalculadoraLeyCoulomb extends JFrame implements ActionListener {
     private JTextField textFieldDistanciaDos;
     private JButton buttonCalcularDiferenciaPotencialElectrico;
     private JLabel labelResultadoDiferenciaPotencialElectrico;
+    public static double k = (1 / (4) * Math.PI * 8.85 * Math.pow(10, -12));
 
     public CalculadoraLeyCoulomb() {
         // Configurar la ventana principal
@@ -142,7 +143,7 @@ public class CalculadoraLeyCoulomb extends JFrame implements ActionListener {
         panelTeamFour.add(labelIdgar);
         panelTeamFour.add(labellSandro);
         panelTeamFour.add(buttonTeamFour);
-// Agregar el ActionListener al botón conocer Integrantes
+        // Agregar el ActionListener al botón conocer Integrantes
         buttonTeamFour.addActionListener(this);
 
         // Panel Calcular Fuerza
@@ -280,13 +281,6 @@ public class CalculadoraLeyCoulomb extends JFrame implements ActionListener {
 
     private void viewTeamFour() {
         {
-            /*
-            GridBagConstraints constraints = new GridBagConstraints();
-            constraints.anchor = GridBagConstraints.WEST;
-            constraints.insets = new Insets(5, 5, 5, 5);
-            constraints.gridx = 0;
-            constraints.gridy = 0;
-             */
             labelEdhm.setText("Huerta Mendoza");
             labelCarlos.setText("Carlos Pizango");
             labelJose.setText("Jose(Sin tilde) Mariñas ");
@@ -313,7 +307,7 @@ public class CalculadoraLeyCoulomb extends JFrame implements ActionListener {
                 double distancia = Double.parseDouble(inputDistancia);
 
                 // Calcular la fuerza
-                double fuerza = (carga1 * carga2) / (distancia * distancia);
+                double fuerza = k * ((carga1 * carga2) / Math.pow(distancia, 2));
 
                 // Mostrar el resultado
                 labelResultadoFuerza.setText("La fuerza es: " + fuerza);
@@ -363,7 +357,7 @@ public class CalculadoraLeyCoulomb extends JFrame implements ActionListener {
                 double distanciaCarga = Double.parseDouble(inputDistanciaCarga);
 
                 // Calcular la fuerza
-                double potelectrico = (cargaprueba * cargaPuntual) / (distanciaCarga);
+                double potelectrico = k * (cargaprueba * cargaPuntual) / (distanciaCarga);
 
                 // Mostrar el resultado
                 labelResultadoPotencialElectrico.setText("El potencial eléctrico es: " + potelectrico);
@@ -390,7 +384,7 @@ public class CalculadoraLeyCoulomb extends JFrame implements ActionListener {
                 double distanciaDos = Double.parseDouble(inputDistanciaDos);
 
                 // Calcular la fuerza
-                double difPotElectrico = (cargapruebaDP) * ((1 / distanciaUno) - (1 / distanciaDos));
+                double difPotElectrico = k * (cargapruebaDP) * ((1 / distanciaUno) - (1 / distanciaDos));
 
                 // Mostrar el resultado
                 labelResultadoPotencialElectrico.setText("El potencial eléctrico es: " + difPotElectrico);

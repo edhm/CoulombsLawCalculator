@@ -35,6 +35,10 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 /**
  * @author edhuerta
+ * @email ed.huerta.m@gmail.com
+ *
+ * This tool allows us to perform calculations related to Coulomb's Law, which
+ * describe the electrostatic interaction between two electric charges.
  */
 public class CalculadoraLeyCoulomb extends JFrame implements ActionListener {
 
@@ -54,7 +58,7 @@ public class CalculadoraLeyCoulomb extends JFrame implements ActionListener {
     private JPanel panelCalcularDiferenciaDePotencialElectrico;
 //  
     private JButton buttonTeamFour;
-    private JLabel labelEdhm, labelJose, labelCarlos, labelIdgar, labellSandro;
+    private JLabel labelEdhm;
 // Componenetes para CalcularFuerza
     private JTextField textFieldCarga1;
     private JTextField textFieldCarga2;
@@ -78,7 +82,7 @@ public class CalculadoraLeyCoulomb extends JFrame implements ActionListener {
     private JTextField textFieldDistanciaDos;
     private JButton buttonCalcularDiferenciaPotencialElectrico;
     private JLabel labelResultadoDiferenciaPotencialElectrico;
-    public static double k = (1 / (4) * Math.PI * 8.85 * Math.pow(10, -12));
+    public static double k = (1 / (4 * Math.PI * 8.85 * Math.pow(10, -12)));
 
     public CalculadoraLeyCoulomb() {
         // Configurar la ventana principal
@@ -132,16 +136,10 @@ public class CalculadoraLeyCoulomb extends JFrame implements ActionListener {
         // Panel TeamFour
         panelTeamFour.setLayout(new BoxLayout(panelTeamFour, BoxLayout.Y_AXIS));
         labelEdhm = new JLabel();
-        labelJose = new JLabel();
-        labelCarlos = new JLabel();
-        labelIdgar = new JLabel();
-        labellSandro = new JLabel();
-        buttonTeamFour = new JButton("¿ Desea Conocer a los integrantes ?");
+
+        buttonTeamFour = new JButton("¿ Desea Conocerme ?");
         panelTeamFour.add(labelEdhm);
-        panelTeamFour.add(labelJose);
-        panelTeamFour.add(labelCarlos);
-        panelTeamFour.add(labelIdgar);
-        panelTeamFour.add(labellSandro);
+
         panelTeamFour.add(buttonTeamFour);
         // Agregar el ActionListener al botón conocer Integrantes
         buttonTeamFour.addActionListener(this);
@@ -281,11 +279,7 @@ public class CalculadoraLeyCoulomb extends JFrame implements ActionListener {
 
     private void viewTeamFour() {
         {
-            labelEdhm.setText("Huerta Mendoza");
-            labelCarlos.setText("Carlos Pizango");
-            labelJose.setText("Jose(Sin tilde) Mariñas ");
-            labelIdgar.setText("Idgar Orellano");
-            labellSandro.setText("Sandro Napan");
+            labelEdhm.setText("Edgar Huerta Mendoza");
 
         }
 

@@ -17,8 +17,11 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -42,11 +45,16 @@ public class CalculadoraLeyCoulomb extends JFrame implements ActionListener {
     private JMenuItem menuItemCalcularCampoElectrico;
     private JMenuItem menuItemCalcularPotencialElectrico;
     private JMenuItem menuItemCalcularDiferenciaDePotencialElectrico;
+    private JMenuItem menuItemTeamFour;
+    private JPanel panelTeamFour;
     private JPanel panelLeyCoulomb;
     private JPanel panelCalcularFuerza;
     private JPanel panelCalcularCampoElectrico;
     private JPanel panelCalcularPotencialElectrico;
     private JPanel panelCalcularDiferenciaDePotencialElectrico;
+//  
+    private JButton buttonTeamFour;
+    private JLabel labelEdhm, labelJose, labelCarlos, labelIdgar, labellSandro;
 // Componenetes para CalcularFuerza
     private JTextField textFieldCarga1;
     private JTextField textFieldCarga2;
@@ -82,7 +90,8 @@ public class CalculadoraLeyCoulomb extends JFrame implements ActionListener {
         // Crear el menú
         menuBar = new JMenuBar();
         menu = new JMenu("Menú");
-        menuItemLeyCoulomb = new JMenuItem("TEam4");
+        menuItemLeyCoulomb = new JMenuItem("Ley de Colulomb");
+        menuItemTeamFour = new JMenuItem("TeamFour");
         menuItemCalcularFuerza = new JMenuItem("Calcular Fuerza");
         menuItemCalcularCampoElectrico = new JMenuItem("Calcular Campo Eléctrico");
         menuItemCalcularPotencialElectrico = new JMenuItem("Calcular Potencial Eléctrico");
@@ -90,6 +99,7 @@ public class CalculadoraLeyCoulomb extends JFrame implements ActionListener {
 
         // Agregar los elementos del menú
         menu.add(menuItemLeyCoulomb);
+        menu.add(menuItemTeamFour);
         menu.add(menuItemCalcularFuerza);
         menu.add(menuItemCalcularCampoElectrico);
         menu.add(menuItemCalcularPotencialElectrico);
@@ -99,6 +109,7 @@ public class CalculadoraLeyCoulomb extends JFrame implements ActionListener {
 
         // Agregar el ActionListener a los elementos del menú
         menuItemLeyCoulomb.addActionListener(this);
+        menuItemTeamFour.addActionListener(this);
         menuItemCalcularFuerza.addActionListener(this);
         menuItemCalcularCampoElectrico.addActionListener(this);
         menuItemCalcularPotencialElectrico.addActionListener(this);
@@ -106,6 +117,7 @@ public class CalculadoraLeyCoulomb extends JFrame implements ActionListener {
 
         // Crear los paneles para cada opción del menú
         panelLeyCoulomb = new JPanel();
+        panelTeamFour = new JPanel();
         panelCalcularFuerza = new JPanel();
         panelCalcularCampoElectrico = new JPanel();
         panelCalcularPotencialElectrico = new JPanel();
@@ -113,16 +125,25 @@ public class CalculadoraLeyCoulomb extends JFrame implements ActionListener {
 
         // Configurar los componentes de cada panel
         // Panel Ley de Coulomb
-        JLabel labeledhm = new JLabel("Huerta Mendoza Edgar");
-        JLabel labeljm = new JLabel("Mariñas");
-        JLabel labelidgar = new JLabel("Idgar");
-        JLabel labelcarlos = new JLabel("Carlos");
-        JLabel labelsandro = new JLabel("Sandro");
-        panelLeyCoulomb.add(labeledhm);
-        panelLeyCoulomb.add(labeljm);
-        panelLeyCoulomb.add(labelidgar);
-        panelLeyCoulomb.add(labelcarlos);
-        panelLeyCoulomb.add(labelsandro);
+        JLabel labelLeyCoulomb = new JLabel("Calculadora Ley de Coulomb");
+        panelLeyCoulomb.add(labelLeyCoulomb);
+
+        // Panel TeamFour
+        panelTeamFour.setLayout(new BoxLayout(panelTeamFour, BoxLayout.Y_AXIS));
+        labelEdhm = new JLabel();
+        labelJose = new JLabel();
+        labelCarlos = new JLabel();
+        labelIdgar = new JLabel();
+        labellSandro = new JLabel();
+        buttonTeamFour = new JButton("¿ Desea Conocer a los integrantes ?");
+        panelTeamFour.add(labelEdhm);
+        panelTeamFour.add(labelJose);
+        panelTeamFour.add(labelCarlos);
+        panelTeamFour.add(labelIdgar);
+        panelTeamFour.add(labellSandro);
+        panelTeamFour.add(buttonTeamFour);
+// Agregar el ActionListener al botón conocer Integrantes
+        buttonTeamFour.addActionListener(this);
 
         // Panel Calcular Fuerza
         JLabel labelCarga1 = new JLabel("Primera Carga :");
@@ -162,8 +183,6 @@ public class CalculadoraLeyCoulomb extends JFrame implements ActionListener {
         // Agregar el ActionListener al botón Calcular Campo Eléctrico
         buttonCalcularCampoElectrico.addActionListener(this);
 
-////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////      
         // Panel Calcular Potencial Electrico
         JLabel labelCargaprueba = new JLabel("Carga prueba :");
         textFieldCargaprueba = new JTextField(10);
@@ -208,6 +227,7 @@ public class CalculadoraLeyCoulomb extends JFrame implements ActionListener {
 
         // Agregar los paneles a la ventana
         add(panelLeyCoulomb);
+        add(panelTeamFour);
         add(panelCalcularFuerza);
         add(panelCalcularCampoElectrico);
         add(panelCalcularPotencialElectrico);
@@ -221,6 +241,8 @@ public class CalculadoraLeyCoulomb extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == menuItemLeyCoulomb) {
             mostrarPanel(panelLeyCoulomb);
+        } else if (e.getSource() == menuItemTeamFour) {
+            mostrarPanel(panelTeamFour);
         } else if (e.getSource() == menuItemCalcularFuerza) {
             mostrarPanel(panelCalcularFuerza);
         } else if (e.getSource() == menuItemCalcularCampoElectrico) {
@@ -228,7 +250,9 @@ public class CalculadoraLeyCoulomb extends JFrame implements ActionListener {
         } else if (e.getSource() == menuItemCalcularPotencialElectrico) {
             mostrarPanel(panelCalcularPotencialElectrico);
         } else if (e.getSource() == menuItemCalcularDiferenciaDePotencialElectrico) {
-            mostrarPanel(panelCalcularDiferenciaDePotencialElectrico);
+            mostrarPanel(panelCalcularDiferenciaDePotencialElectrico);      //
+        } else if (e.getSource() == buttonTeamFour) {
+            viewTeamFour();//
         } else if (e.getSource() == buttonCalcularFuerza) {
             calcularFuerza();
         } else if (e.getSource() == buttonCalcularCampoElectrico) {
@@ -240,13 +264,11 @@ public class CalculadoraLeyCoulomb extends JFrame implements ActionListener {
         }
     }
 
-////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////// 
-//menu.add(menuItemCalcularCampoElectrico);
     //menu.add(menuItemCalcularPotencialElectrico);
     private void mostrarPanel(JPanel panel) {
         // Ocultar todos los paneles
         panelLeyCoulomb.setVisible(false);
+        panelTeamFour.setVisible(false);
         panelCalcularFuerza.setVisible(false);
         panelCalcularCampoElectrico.setVisible(false);
         panelCalcularPotencialElectrico.setVisible(false);
@@ -254,6 +276,25 @@ public class CalculadoraLeyCoulomb extends JFrame implements ActionListener {
 
         // Mostrar el panel seleccionado
         panel.setVisible(true);
+    }
+
+    private void viewTeamFour() {
+        {
+            /*
+            GridBagConstraints constraints = new GridBagConstraints();
+            constraints.anchor = GridBagConstraints.WEST;
+            constraints.insets = new Insets(5, 5, 5, 5);
+            constraints.gridx = 0;
+            constraints.gridy = 0;
+             */
+            labelEdhm.setText("Huerta Mendoza");
+            labelCarlos.setText("Carlos Pizango");
+            labelJose.setText("Jose(Sin tilde) Mariñas ");
+            labelIdgar.setText("Idgar Orellano");
+            labellSandro.setText("Sandro Napan");
+
+        }
+
     }
 
     private void calcularFuerza() {
